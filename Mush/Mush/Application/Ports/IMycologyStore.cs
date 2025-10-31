@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mush.src.Application.Dtos;
 
-namespace Mush.src.Application.Ports
+namespace Mush.Application.Ports
 {
     public interface IMycologyStore
     {

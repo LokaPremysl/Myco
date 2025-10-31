@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\Domain\" />
-    <Folder Include="src\Shared\" />
+    <Folder Include="Shared\" />
     <Folder Include="Tests\Domain\" />
     <Folder Include="Tests\Application\" />
     <Folder Include="Tests\Infrastructure\" />

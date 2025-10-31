@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Mush.src.Application.Ports
+namespace Mush.Application.Ports
 {
     internal interface IProjectService
     {

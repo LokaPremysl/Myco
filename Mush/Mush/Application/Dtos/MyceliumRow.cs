@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mush.src.Application.Dtos
+namespace Mush.Application.Dtos
 {
     public sealed class MyceliumRow : INotifyPropertyChanged
     {
