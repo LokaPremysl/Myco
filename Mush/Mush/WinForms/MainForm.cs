@@ -30,6 +30,7 @@ using System.Windows.Forms;
 
 using Mush.AppLayer.Dtos;
 using Mush.AppLayer.Ports;
+using Mush.WinForms.Ui;
 
 namespace Mush.WinForms
 {
@@ -107,60 +108,161 @@ namespace Mush.WinForms
             gridSpawn = CreateGrid();
             gridBulk = CreateGrid();
 
-            // Mycelium grid columns
-            gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Mycelium",
-                HeaderText = "Mycelium",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
+            GridColumnFactory.ApplyMyceliumColumns(gridMycelium /*, _t*/);
+            GridColumnFactory.ApplySpawnColumns(gridSpawn /*, _t*/);
+            GridColumnFactory.ApplyBulkColumns(gridBulk /*, _t*/);
 
-            gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Origin",
-                HeaderText = "Origin",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
 
-            gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Date",
-                HeaderText = "Date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            });
+            //// Mycelium grid columns
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Mycelium",
+            //    HeaderText = "Mycelium",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
 
-            // Spawn grid columns
-            gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Material",
-                HeaderText = "Spawn",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Origin",
+            //    HeaderText = "Origin",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
 
-            gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Date",
-                HeaderText = "Inokulated",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            });
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Date",
+            //    HeaderText = "Date",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
+            //});
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Medium",
+            //    HeaderText = "Medium",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
 
-            // Bulk grid columns
-            gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Material",
-                HeaderText = "Bulk (substrate)",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Status",
+            //    HeaderText = "Status",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
 
-            gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Date",
-                HeaderText = "Boxed",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            });
+            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Notes",
+            //    HeaderText = "Notes",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
+
+            //// Spawn grid columns
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Material",
+            //    HeaderText = "Spawn",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
+
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Date",
+            //    HeaderText = "Inokulated",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
+            //});
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Inoculum",
+            //    HeaderText = "Inoculum",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Jars",
+            //    HeaderText = "Jars/Bags",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Temperature",
+            //    HeaderText = "Incubation temp",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Colonization",
+            //    HeaderText = "Colonization (%)",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Notes",
+            //    HeaderText = "Notes",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
+
+            //// Bulk grid columns
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Material",
+            //    HeaderText = "Bulk (substrate)",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Date",
+            //    HeaderText = "Boxed",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
+            //});
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Ratio",
+            //    HeaderText = "Spawn : substrate",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "SpawnAmount",
+            //    HeaderText = "Spawn amount",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Hydration",
+            //    HeaderText = "Hydration",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "FruitingStart",
+            //    HeaderText = "Fruiting start",
+            //    DefaultCellStyle = { Format = "yyyy-MM-dd" },
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "FlushCount",
+            //    HeaderText = "Flushes",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //});
+
+            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    DataPropertyName = "Notes",
+            //    HeaderText = "Notes",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            //});
 
             gridsPanel.Controls.Add(gridMycelium, 0, 0);
             gridsPanel.Controls.Add(gridSpawn, 1, 0);
@@ -177,7 +279,7 @@ namespace Mush.WinForms
             {
                 Dock = DockStyle.Fill,
                 AutoGenerateColumns = false,
-                ReadOnly = true,
+                ReadOnly = false,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 MultiSelect = false,
 
@@ -233,30 +335,58 @@ namespace Mush.WinForms
             }
         }
 
+        //private void AddSpawn()
+        //{
+        //    var parent = gridMycelium.CurrentRow?.DataBoundItem as MyceliumRow;
+        //    if (parent == null) return;
+
+        //    using var dlg = new InputDialog("Nový Spawn", "Zadej materiál (např. pšenice):");
+        //    if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
+        //    {
+        //        _store.AddSpawn(parent, dlg.Value, DateTime.Today);
+        //        bsSpawn.ResetBindings(false);
+        //    }
+        //}
+
         private void AddSpawn()
         {
-            var parent = gridMycelium.CurrentRow?.DataBoundItem as MyceliumRow;
-            if (parent == null) return;
+            var myc = gridMycelium.CurrentRow?.DataBoundItem as MyceliumRow;
+            if (myc == null) return;
 
-            using var dlg = new InputDialog("Nový Spawn", "Zadej materiál (např. pšenice):");
+            using var dlg = new InputDialog("Nový Spawn", "Zadej materiál:");
             if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
             {
-                _store.AddSpawn(parent, dlg.Value, DateTime.Today);
+                _store.AddSpawn(myc.Id, dlg.Value, DateTime.Today);
                 bsSpawn.ResetBindings(false);
             }
         }
 
+        //private void AddBulk()
+        //{
+        //    var parent = gridSpawn.CurrentRow?.DataBoundItem as SpawnRow;
+        //    if (parent == null) return;
+
+        //    using var dlg = new InputDialog("Nový Bulk", "Zadej substrát (např. CVG):");
+        //    if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
+        //    {
+        //        _store.AddBulk(parent, dlg.Value, DateTime.Today);
+        //        bsBulk.ResetBindings(false);
+        //    }
+        //}
+
         private void AddBulk()
         {
-            var parent = gridSpawn.CurrentRow?.DataBoundItem as SpawnRow;
-            if (parent == null) return;
+            var sp = gridSpawn.CurrentRow?.DataBoundItem as SpawnRow;
+            if (sp == null) return;
 
-            using var dlg = new InputDialog("Nový Bulk", "Zadej substrát (např. CVG):");
+            using var dlg = new InputDialog("Nový Bulk", "Zadej substrát:");
             if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
             {
-                _store.AddBulk(parent, dlg.Value, DateTime.Today);
+                _store.AddBulk(sp.Id, dlg.Value, DateTime.Today);
                 bsBulk.ResetBindings(false);
             }
         }
+
+
     }
 }
