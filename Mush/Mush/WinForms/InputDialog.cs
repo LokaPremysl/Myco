@@ -1,4 +1,4 @@
-﻿namespace Mush
+﻿namespace Mush.WinForms
 {
     public class InputDialog : Form
     {

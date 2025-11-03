@@ -1,4 +1,25 @@
-﻿using System;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
+
+//namespace Mush.WinForms
+//{
+//    public partial class SpawnDialog : Form
+//    {
+//        public SpawnDialog()
+//        {
+//            InitializeComponent();
+//        }
+//    }
+//}
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +29,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mush
+namespace Mush.WinForms
 {
     public partial class SpawnDialog : Form
     {
@@ -41,17 +62,17 @@ namespace Mush
             this.Controls.Add(btnCancel);
         }
 
-            //Controls.Add(dataGridSpawn);
-            private readonly Button btnOk = new()
-            {
-                Text = "OK",
-                Left = 116,
-                Top = 90,
-                Width = 75,
-                DialogResult = DialogResult.OK
-            };
-           
-           
+        //Controls.Add(dataGridSpawn);
+        private readonly Button btnOk = new()
+        {
+            Text = "OK",
+            Left = 116,
+            Top = 90,
+            Width = 75,
+            DialogResult = DialogResult.OK
+        };
+
+
 
 
         private readonly Button btnCancel = new()
@@ -62,10 +83,5 @@ namespace Mush
             Width = 75,
             DialogResult = DialogResult.Cancel
         };
-
-        
-
-
-    
     }
 }

@@ -1,5 +1,5 @@
-﻿using Mush.Application.Dtos;
-using Mush.Application.Ports;
+﻿using Mush.AppLayer.Dtos;
+using Mush.AppLayer.Ports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Web;
 using System.Windows.Forms.Design;
 
 
-namespace Mush.src.Infrastructure.Stores
+namespace Mush.AppLayer.Services
 {
     public sealed class MycologyStore : IMycologyStore
     {

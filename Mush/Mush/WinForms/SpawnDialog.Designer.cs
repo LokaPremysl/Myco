@@ -1,5 +1,5 @@
-﻿namespace Mush
-{ 
+﻿namespace Mush.WinForms
+{
     partial class SpawnDialog
     {
         /// <summary>

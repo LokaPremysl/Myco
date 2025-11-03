@@ -1,10 +1,39 @@
-using System.ComponentModel;
-using Mush.Application.Dtos;
-using Mush.Application.Ports;
+Ôªø//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
 
-namespace Mush
+//namespace Mush.WinForms
+//{
+//    public partial class MainForm : Form
+//    {
+//        public MainForm()
+//        {
+//            InitializeComponent();
+//        }
+//    }
+//}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using Mush.AppLayer.Dtos;
+using Mush.AppLayer.Ports;
+
+namespace Mush.WinForms
 {
-    public partial class MainForm : Form
+    public partial class MainForm : System.Windows.Forms.Form
     {
         private readonly IMycologyStore _store;
 
@@ -30,7 +59,7 @@ namespace Mush
 
         private void BuildLayout()
         {
-            Text = "MushApp ñ Evidence pÏstov·nÌ";
+            Text = "MushApp ‚Äì Evidence pƒõstov√°n√≠";
             Width = 1000;
             Height = 700;
 
@@ -43,7 +72,7 @@ namespace Mush
             layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
-            // HornÌ panel s tlaËÌtky
+            // Horn√≠ panel s tlaƒç√≠tky
             var topPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -81,8 +110,8 @@ namespace Mush
             // Mycelium grid columns
             gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Mycelium",   
-                HeaderText = "Mycelium",  
+                DataPropertyName = "Mycelium",
+                HeaderText = "Mycelium",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
@@ -147,7 +176,7 @@ namespace Mush
             var grid = new DataGridView
             {
                 Dock = DockStyle.Fill,
-                AutoGenerateColumns = false,            
+                AutoGenerateColumns = false,
                 ReadOnly = true,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 MultiSelect = false,
@@ -155,15 +184,15 @@ namespace Mush
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
 
-                AllowUserToResizeRows = false,          
-                RowHeadersVisible = false,              
+                AllowUserToResizeRows = false,
+                RowHeadersVisible = false,
 
                 ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing,
-                AllowUserToResizeColumns = true,        
+                AllowUserToResizeColumns = true,
 
-                RowTemplate = { Height = 28 },          
+                RowTemplate = { Height = 28 },
             };
-            
+
             grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             grid.DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
 
@@ -196,10 +225,10 @@ namespace Mush
 
         private void AddMycelium()
         {
-            using var dlg = new InputDialog("NovÈ mycelium", "Zadej n·zev mycelia:");
+            using var dlg = new InputDialog("Nov√© mycelium", "Zadej n√°zev mycelia:");
             if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
             {
-                _store.AddMycelium(dlg.Value, DateTime.Today, "nezn·m˝ p˘vod");
+                _store.AddMycelium(dlg.Value, DateTime.Today, "nezn√°m√Ω p≈Øvod");
                 bsMycelium.ResetBindings(false);
             }
         }
@@ -209,7 +238,7 @@ namespace Mush
             var parent = gridMycelium.CurrentRow?.DataBoundItem as MyceliumRow;
             if (parent == null) return;
 
-            using var dlg = new InputDialog("Nov˝ Spawn", "Zadej materi·l (nap¯. pöenice):");
+            using var dlg = new InputDialog("Nov√Ω Spawn", "Zadej materi√°l (nap≈ô. p≈°enice):");
             if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
             {
                 _store.AddSpawn(parent, dlg.Value, DateTime.Today);
@@ -222,7 +251,7 @@ namespace Mush
             var parent = gridSpawn.CurrentRow?.DataBoundItem as SpawnRow;
             if (parent == null) return;
 
-            using var dlg = new InputDialog("Nov˝ Bulk", "Zadej substr·t (nap¯. CVG):");
+            using var dlg = new InputDialog("Nov√Ω Bulk", "Zadej substr√°t (nap≈ô. CVG):");
             if (dlg.ShowDialog(this) == DialogResult.OK && !string.IsNullOrWhiteSpace(dlg.Value))
             {
                 _store.AddBulk(parent, dlg.Value, DateTime.Today);

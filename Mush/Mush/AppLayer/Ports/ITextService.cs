@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mush.src.Application.Ports;
-namespace Mush.src.Application.Dtos
+
+namespace Mush.AppLayer.Ports
 {
-    internal class ProjectService : IProjectService
+    public interface ITextService
     {
+        string T(string key);
     }
 }

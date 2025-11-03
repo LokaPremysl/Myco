@@ -1,9 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Mush.Application.Ports;
+using Mush.AppLayer.Ports;
 using Mush.Infrastructure.Stores;
-using MushApp.src.Infrastructure.Localization;
-using static Mush.Application.Ports.IProjectService;
+using Mush.Infrastructure.Localization;
+using Mush.AppLayer.Services;
+using static Mush.AppLayer.Ports.IProjectService;
+using Mush.WinForms;
+using System;
+using System.Windows.Forms;
+
 namespace Mush
 {
     internal static class MushApp
@@ -17,11 +22,20 @@ namespace Mush
             ApplicationConfiguration.Initialize();
             using var host = Host.CreateDefaultBuilder().ConfigureServices(s =>
                 {
+                    //s.AddSingleton<ITextService>(_ => new TextService("cs"));
+                    s.AddSingleton<ITextService>(sp => (ITextService)new TextService("cs"));
                     s.AddSingleton<IMycologyStore, MycologyStore>();
                     s.AddScoped<IProjectService, ProjectService>();
                     s.AddTransient<MainForm>();
+                    s.AddTransient<SpawnDialog>();
+                    s.AddTransient<InputDialog>();
                 }).Build();
-            Application.Run(host.Services.GetRequiredService<MainForm>());
+            //Application.Run(host.Services.GetRequiredService<MainForm>());
+            
+            using var scope = host.Services.CreateScope();
+            var sp = scope.ServiceProvider;
+
+            Application.Run(sp.GetRequiredService<MainForm>());
         }
     }
 }

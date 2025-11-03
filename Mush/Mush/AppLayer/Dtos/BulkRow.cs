@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mush.srcApplication.Dtos
+namespace Mush.AppLayer.Dtos
 {
     public sealed class BulkRow : INotifyPropertyChanged
     {

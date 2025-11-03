@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mush.src.Application.Dtos;
+using Mush.AppLayer.Dtos;
 
-namespace Mush.Application.Ports
+namespace Mush.AppLayer.Ports
 {
     public interface IMycologyStore
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Mush.AppLayer.Ports;
 
-namespace MushApp.src.Infrastructure.Localization
+namespace Mush.Infrastructure.Localization
 {
     public sealed class TextService : ITextService
     {
