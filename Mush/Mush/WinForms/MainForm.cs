@@ -30,13 +30,19 @@ using System.Windows.Forms;
 
 using Mush.AppLayer.Dtos;
 using Mush.AppLayer.Ports;
+using Mush.AppLayer.Services;
+using Mush.Infrastructure.Stores;
 using Mush.WinForms.Ui;
+using Mush.Infrastructure.Localization;
 
 namespace Mush.WinForms
 {
     public partial class MainForm : System.Windows.Forms.Form
     {
         private readonly IMycologyStore _store;
+        private readonly JsonMycologyStore _persist;
+        private readonly ITextService _t;
+        private ComboBox cboLang;
 
         private readonly BindingSource bsMycelium = new();
         private readonly BindingSource bsSpawn = new();
@@ -50,13 +56,48 @@ namespace Mush.WinForms
         private Button btnAddSpawn;
         private Button btnAddBulk;
 
-        public MainForm(IMycologyStore store)
+        public MainForm(IMycologyStore store, ITextService t, JsonMycologyStore persist)
         {
             _store = store;
+            _persist = persist;
+            _t = t;
             InitializeComponent();
             BuildLayout();
             BindData();
+
+            _t.LanguageChanged += (_, __) => RefreshTexts();
+            // načtení po zobrazení
+            this.Load += async (_, __) =>
+            {
+                try
+                {
+                    var data = await _persist.LoadAsync();
+                    if (data.Count > 0 && _store is MycologyStore impl)
+                        impl.ReplaceAll(data);
+                    // refresh bindingů
+                    bsMycelium.ResetBindings(false);
+                    RebindSpawns();
+                }
+                catch (Exception ex)
+                {
+                    // volitelné: MessageBox.Show($"Load failed: {ex.Message}");
+                }
+            };
+
+            // uložení při zavření
+            this.FormClosing += async (_, __) =>
+            {
+                try
+                {
+                    await _persist.SaveAsync(_store.Myceliums);
+                }
+                catch (Exception ex)
+                {
+                    // volitelné: MessageBox.Show($"Save failed: {ex.Message}");
+                }
+            };
         }
+    
 
         private void BuildLayout()
         {
@@ -108,161 +149,9 @@ namespace Mush.WinForms
             gridSpawn = CreateGrid();
             gridBulk = CreateGrid();
 
-            GridColumnFactory.ApplyMyceliumColumns(gridMycelium /*, _t*/);
-            GridColumnFactory.ApplySpawnColumns(gridSpawn /*, _t*/);
-            GridColumnFactory.ApplyBulkColumns(gridBulk /*, _t*/);
-
-
-            //// Mycelium grid columns
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Mycelium",
-            //    HeaderText = "Mycelium",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Origin",
-            //    HeaderText = "Origin",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Date",
-            //    HeaderText = "Date",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            //});
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Medium",
-            //    HeaderText = "Medium",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Status",
-            //    HeaderText = "Status",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridMycelium.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Notes",
-            //    HeaderText = "Notes",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //// Spawn grid columns
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Material",
-            //    HeaderText = "Spawn",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Date",
-            //    HeaderText = "Inokulated",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            //});
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Inoculum",
-            //    HeaderText = "Inoculum",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Jars",
-            //    HeaderText = "Jars/Bags",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Temperature",
-            //    HeaderText = "Incubation temp",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Colonization",
-            //    HeaderText = "Colonization (%)",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridSpawn.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Notes",
-            //    HeaderText = "Notes",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //// Bulk grid columns
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Material",
-            //    HeaderText = "Bulk (substrate)",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Date",
-            //    HeaderText = "Boxed",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-            //    DefaultCellStyle = { Format = "yyyy-MM-dd" }
-            //});
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Ratio",
-            //    HeaderText = "Spawn : substrate",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "SpawnAmount",
-            //    HeaderText = "Spawn amount",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Hydration",
-            //    HeaderText = "Hydration",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "FruitingStart",
-            //    HeaderText = "Fruiting start",
-            //    DefaultCellStyle = { Format = "yyyy-MM-dd" },
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "FlushCount",
-            //    HeaderText = "Flushes",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //});
-
-            //gridBulk.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    DataPropertyName = "Notes",
-            //    HeaderText = "Notes",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            //});
+            GridColumnFactory.ApplyMyceliumColumns(gridMycelium, _t);
+            GridColumnFactory.ApplySpawnColumns(gridSpawn, _t);
+            GridColumnFactory.ApplyBulkColumns(gridBulk,_t);
 
             gridsPanel.Controls.Add(gridMycelium, 0, 0);
             gridsPanel.Controls.Add(gridSpawn, 1, 0);
@@ -271,6 +160,93 @@ namespace Mush.WinForms
             layout.Controls.Add(topPanel, 0, 0);
             layout.Controls.Add(gridsPanel, 0, 1);
             Controls.Add(layout);
+
+            var btnLoad = new Button { Text = "Load", AutoSize = true };
+            var btnSave = new Button { Text = "Save", AutoSize = true };
+
+            btnLoad.Click += async (_, __) => await LoadFromDiskAsync();
+            btnSave.Click += async (_, __) => await SaveToDiskAsync();
+
+            topPanel.Controls.AddRange(new Control[] { btnLoad, btnSave });
+
+
+            // --- jazykový přepínač ---
+            cboLang = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = 120 };
+            cboLang.DisplayMember = "Value";
+            cboLang.ValueMember = "Key";
+            cboLang.Items.Add(new KeyValuePair<string, string>("cs", "Čeština"));
+            cboLang.Items.Add(new KeyValuePair<string, string>("en", "English"));
+
+            // výběr aktuálního jazyka
+            for (int i = 0; i < cboLang.Items.Count; i++)
+            {
+                var kv = (KeyValuePair<string, string>)cboLang.Items[i]!;
+                if (string.Equals(kv.Key, _t.CurrentLanguage, StringComparison.OrdinalIgnoreCase))
+                {
+                    cboLang.SelectedIndex = i;
+                    break;
+                }
+            }
+            if (cboLang.SelectedIndex < 0) cboLang.SelectedIndex = 0; // default
+
+            cboLang.SelectedValueChanged += (_, __) =>
+            {
+                var kv = (KeyValuePair<string, string>)cboLang.SelectedItem!;
+                _t.SetLanguage(kv.Key);
+            };
+
+            topPanel.Controls.Add(cboLang);
+
+            RefreshTexts();
+
+        }
+
+        //private void RefreshTexts()
+        //{
+        //    // zachovej datasourcy, při přestavbě sloupců se ztratí
+        //    var dsMyc = gridMycelium.DataSource;
+        //    var dsSp = gridSpawn.DataSource;
+        //    var dsBu = gridBulk.DataSource;
+
+        //    Mush.WinForms.Ui.GridColumnFactory.ApplyMyceliumColumns(gridMycelium, _t);
+        //    Mush.WinForms.Ui.GridColumnFactory.ApplySpawnColumns(gridSpawn, _t);
+        //    Mush.WinForms.Ui.GridColumnFactory.ApplyBulkColumns(gridBulk, _t);
+
+        //    gridMycelium.DataSource = dsMyc;
+        //    gridSpawn.DataSource = dsSp;
+        //    gridBulk.DataSource = dsBu;
+
+        //    // tlačítka (klíče už máš v TextService)
+        //    btnAddMycelium.Text = _t.T("MainForm.AddCultureButton");
+        //    btnAddSpawn.Text = _t.T("MainForm.AddSpawnButton");
+        //    btnAddBulk.Text = _t.T("MainForm.AddBulkButton");
+
+        //    // volitelně titulek okna
+        //    this.Text = _t.T("MainForm.Tab.Culture"); // nebo si přidej vlastní klíč: "MainForm.Title"
+        //}
+
+        private void RefreshTexts()
+        {
+            void UpdateHeaders(DataGridView g)
+            {
+                foreach (DataGridViewColumn col in g.Columns)
+                {
+                    if (col.Tag is string key)
+                        col.HeaderText = _t.T(key);
+                }
+            }
+
+            UpdateHeaders(gridMycelium);
+            UpdateHeaders(gridSpawn);
+            UpdateHeaders(gridBulk);
+
+            // tlačítka
+            btnAddMycelium.Text = _t.T("MainForm.AddCultureButton");
+            btnAddSpawn.Text = _t.T("MainForm.AddSpawnButton");
+            btnAddBulk.Text = _t.T("MainForm.AddBulkButton");
+
+            // titulek okna (nebo si přidej vlastní klíč)
+            this.Text = _t.T("MainForm.Tab.Culture");
         }
 
         private DataGridView CreateGrid()
@@ -384,6 +360,47 @@ namespace Mush.WinForms
             {
                 _store.AddBulk(sp.Id, dlg.Value, DateTime.Today);
                 bsBulk.ResetBindings(false);
+            }
+        }
+
+        private async Task LoadFromDiskAsync(string? path = null)
+        {
+            try
+            {
+                var data = await _persist.LoadAsync(path);
+                if (_store is Mush.AppLayer.Services.MycologyStore impl)
+                {
+                    impl.ReplaceAll(data);          // přehodí kořen a přestaví indexy
+                }
+                else
+                {
+                    // fallback: bez ReplaceAll – ručně vyměnit
+                    _store.Myceliums.Clear();
+                    foreach (var m in data) _store.Myceliums.Add(m);
+                    // pokud máš RebuildIndexes jen v implementaci, tady to nejde volat
+                }
+
+                // refresh UI
+                bsMycelium.ResetBindings(false);
+                RebindSpawns();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Load failed:\n{ex.Message}", "Mush", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task SaveToDiskAsync(string? path = null)
+        {
+            try
+            {
+                await _persist.SaveAsync(_store.Myceliums, path);
+                // volitelně potvrzení:
+                // MessageBox.Show(this, "Saved.", "Mush");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Save failed:\n{ex.Message}", "Mush", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

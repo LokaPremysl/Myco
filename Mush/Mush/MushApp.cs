@@ -23,12 +23,14 @@ namespace Mush
             using var host = Host.CreateDefaultBuilder().ConfigureServices(s =>
                 {
                     //s.AddSingleton<ITextService>(_ => new TextService("cs"));
-                    s.AddSingleton<ITextService>(sp => (ITextService)new TextService("cs"));
+                    //s.AddSingleton<ITextService>(sp => (ITextService)new TextService("cs"));
+                    s.AddSingleton<ITextService>(sp => new TextService("cs"));
                     s.AddSingleton<IMycologyStore, MycologyStore>();
                     s.AddScoped<IProjectService, ProjectService>();
                     s.AddTransient<MainForm>();
                     s.AddTransient<SpawnDialog>();
                     s.AddTransient<InputDialog>();
+                    s.AddSingleton<JsonMycologyStore>();
                 }).Build();
             //Application.Run(host.Services.GetRequiredService<MainForm>());
             

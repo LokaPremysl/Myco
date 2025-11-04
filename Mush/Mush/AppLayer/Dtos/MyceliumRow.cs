@@ -27,7 +27,7 @@ namespace Mush.AppLayer.Dtos
         public string Notes { get => _notes; set { if (_notes == value) return; _notes = value; OnChanged(nameof(Notes)); } }
         public string Status { get => _status; set { if (_status == value) return; _status = value; OnChanged(nameof(Status)); } }
 
-        public BindingList<SpawnRow> Spawns { get; } = new();
+        public BindingList<SpawnRow> Spawns { get; set; } = new();
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnChanged(string p) => PropertyChanged?.Invoke(this, new(p));
 

@@ -8,11 +8,16 @@ namespace Mush.Infrastructure.Localization
         private readonly string _currentLanguage;
         private readonly Dictionary<string, string> _en;
         private readonly Dictionary<string, string> _cs;
-
-        public TextService(string currentLanguage = "en")
+        private string _lang;
+        public string CurrentLanguage => _lang;
+        public event EventHandler? LanguageChanged;
+        //public TextService(string initialLang = "cs") => _lang = initialLang;
+        
+        
+        public TextService(string initialLang = "cs")
         {
-            _currentLanguage = currentLanguage;
-
+            //_currentLanguage = currentLanguage;
+            _lang = initialLang;
             // 1) Základní EN slovník
             _en = new Dictionary<string, string>
             {
@@ -43,9 +48,34 @@ namespace Mush.Infrastructure.Localization
                 ["SpawnDialog.InoculumInfo"] = "Inoculum used:",
                 ["SpawnDialog.Ok"] = "OK",
                 ["SpawnDialog.Cancel"] = "Cancel",
-            };
+                
+            ["Main.Col.Mycelium"] = "Mycelium",
+            ["Main.Col.Origin"] = "Origin",
+            ["Main.Col.Medium"] = "Medium",
+            ["Main.Col.Status"] = "Status",
+            ["Main.Col.Date"] = "Date",
+            ["Main.Col.Notes"] = "Notes",
 
-            // 2) Český slovník (zatím jen pár, zbytek doplníme kdykoli)
+            // Spawn
+            ["Spawn.Col.Material"] = "Spawn",
+            ["Spawn.Col.Inoculum"] = "Inoculum",
+            ["Spawn.Col.Jars"] = "Jars/Bags",
+            ["Spawn.Col.Temperature"] = "Incubation temp",
+            ["Spawn.Col.Colonization"] = "Colonization (%)",
+            ["Spawn.Col.Date"] = "Inoculated at",
+            ["Spawn.Col.Notes"] = "Notes",
+
+            // Bulk
+            ["Bulk.Col.Material"] = "Bulk (substrate)",
+            ["Bulk.Col.Ratio"] = "Spawn : substrate",
+            ["Bulk.Col.SpawnAmount"] = "Spawn amount",
+            ["Bulk.Col.Hydration"] = "Hydration",
+            ["Bulk.Col.FruitingStart"] = "Fruiting start",
+            ["Bulk.Col.FlushCount"] = "Flushes",
+            ["Bulk.Col.Date"] = "Prepared at",
+            ["Bulk.Col.Notes"] = "Notes",
+        };
+
             _cs = new Dictionary<string, string>
             {
                 // Login
@@ -75,23 +105,66 @@ namespace Mush.Infrastructure.Localization
                 ["SpawnDialog.InoculumInfo"] = "Použité inokulum:",
                 ["SpawnDialog.Ok"] = "OK",
                 ["SpawnDialog.Cancel"] = "Zrušit",
-            };
+
+                // Mycelium
+            ["Main.Col.Mycelium"] = "Mycelium",
+            ["Main.Col.Origin"] = "Původ",
+            ["Main.Col.Medium"] = "Médium",
+            ["Main.Col.Status"] = "Stav",
+            ["Main.Col.Date"] = "Datum",
+            ["Main.Col.Notes"] = "Poznámky",
+
+            // Spawn
+            ["Spawn.Col.Material"] = "Spawn",
+            ["Spawn.Col.Inoculum"] = "Inokulum",
+            ["Spawn.Col.Jars"] = "Sklenice/Pytle",
+            ["Spawn.Col.Temperature"] = "Teplota inkubace",
+            ["Spawn.Col.Colonization"] = "Kolonizace (%)",
+            ["Spawn.Col.Date"] = "Inokulováno",
+            ["Spawn.Col.Notes"] = "Poznámky",
+
+            // Bulk
+            ["Bulk.Col.Material"] = "Bulk (substrát)",
+            ["Bulk.Col.Ratio"] = "Poměr spawn:substrát",
+            ["Bulk.Col.SpawnAmount"] = "Množství spawn",
+            ["Bulk.Col.Hydration"] = "Zavlhčení",
+            ["Bulk.Col.FruitingStart"] = "Začátek plodění",
+            ["Bulk.Col.FlushCount"] = "Počet flushů",
+            ["Bulk.Col.Date"] = "Připraveno",
+            ["Bulk.Col.Notes"] = "Poznámky",
+        };
         }
+
+        //public string T(string key)
+        //{
+        //    // 1. zkus aktivní jazyk
+        //    if (_currentLanguage.StartsWith("cs"))
+        //    {
+        //        if (_cs.TryGetValue(key, out var cz)) return cz;
+        //    }
+        //    // budoucí jazyky: if (_currentLanguage.StartsWith("de")) ...
+
+        //    // 2. fallback EN
+        //    if (_en.TryGetValue(key, out var en)) return en;
+
+        //    // 3. fallback klíč samotný (debug)
+        //    return key;
+        //}
 
         public string T(string key)
         {
-            // 1. zkus aktivní jazyk
-            if (_currentLanguage.StartsWith("cs"))
-            {
-                if (_cs.TryGetValue(key, out var cz)) return cz;
-            }
-            // budoucí jazyky: if (_currentLanguage.StartsWith("de")) ...
-
-            // 2. fallback EN
+            var d = _lang == "cs" ? _cs : _en;
+            if (d.TryGetValue(key, out var v)) return v;
+            // fallback
             if (_en.TryGetValue(key, out var en)) return en;
-
-            // 3. fallback klíč samotný (debug)
             return key;
+        }
+
+        public void SetLanguage(string lang)
+        {
+            if (string.Equals(_lang, lang, StringComparison.OrdinalIgnoreCase)) return;
+            _lang = lang;
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Mush.AppLayer.Dtos
         public int Colonization { get => _colonization; set { if (_colonization == value) return; _colonization = value; OnChanged(nameof(Colonization)); } }
         public string Notes { get => _notes; set { if (_notes == value) return; _notes = value; OnChanged(nameof(Notes)); } }
 
-        public BindingList<BulkRow> Bulks { get; } = new();
+        public BindingList<BulkRow> Bulks { get; set; } = new();
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnChanged(string p) => PropertyChanged?.Invoke(this, new(p));
 

@@ -30,17 +30,39 @@ namespace Mush.AppLayer.Services
             RebuildIndexes();
         }
 
+        //private void RebuildIndexes()
+        //{
+        //    _mycById.Clear(); _spawnById.Clear(); _bulkById.Clear();
+        //    foreach (var m in Myceliums)
+        //    {
+        //        _mycById[m.Id] = m;
+        //        foreach (var s in m.Spawns)
+        //        {
+        //            _spawnById[s.Id] = s;
+        //            foreach (var b in s.Bulks)
+        //                _bulkById[b.Id] = b;
+        //        }
+        //    }
+        //}
+
         private void RebuildIndexes()
         {
-            _mycById.Clear(); _spawnById.Clear(); _bulkById.Clear();
+            _mycById.Clear();
+            _spawnById.Clear();
+            _bulkById.Clear();
+
             foreach (var m in Myceliums)
             {
                 _mycById[m.Id] = m;
                 foreach (var s in m.Spawns)
                 {
+                    s.MyceliumId = m.Id;           // pojistka, kdyby chyběla vazba
                     _spawnById[s.Id] = s;
                     foreach (var b in s.Bulks)
+                    {
+                        b.SpawnId = s.Id;          // dtto
                         _bulkById[b.Id] = b;
+                    }
                 }
             }
         }
@@ -165,6 +187,15 @@ namespace Mush.AppLayer.Services
             _bulkById.Remove(id);
             return parent.Bulks.Remove(b);
         }
+
+        public void ReplaceAll(BindingList<MyceliumRow> newData)
+        {
+            Myceliums.Clear();
+            foreach (var m in newData)
+                Myceliums.Add(m);
+            RebuildIndexes(); // ujisti se, že existuje a dělá _mycById/_spawnById/_bulkById
+        }
+
     }
 }
 
