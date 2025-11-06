@@ -19,23 +19,21 @@ namespace Mush
         [STAThread]
         static void Main()
         {
+            
             ApplicationConfiguration.Initialize();
             using var host = Host.CreateDefaultBuilder().ConfigureServices(s =>
                 {
-                    //s.AddSingleton<ITextService>(_ => new TextService("cs"));
-                    //s.AddSingleton<ITextService>(sp => (ITextService)new TextService("cs"));
-                    s.AddSingleton<ITextService>(sp => new TextService("cs"));
                     s.AddSingleton<IMycologyStore, MycologyStore>();
-                    s.AddScoped<IProjectService, ProjectService>();
+                    s.AddSingleton<ITextService>(sp => new TextService("cs"));
+                    s.AddSingleton<JsonMycologyStore>();
+                    //s.AddScoped<IProjectService, ProjectService>();
                     s.AddTransient<MainForm>();
                     s.AddTransient<SpawnDialog>();
                     s.AddTransient<InputDialog>();
-                    s.AddSingleton<JsonMycologyStore>();
+                    s.AddTransient<IMycologyPresenter, MycologyPresenter>();
                 }).Build();
-            //Application.Run(host.Services.GetRequiredService<MainForm>());
             
-            using var scope = host.Services.CreateScope();
-            var sp = scope.ServiceProvider;
+            var sp = host.Services;
 
             Application.Run(sp.GetRequiredService<MainForm>());
         }

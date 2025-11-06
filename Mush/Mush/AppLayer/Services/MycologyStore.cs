@@ -9,18 +9,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms.Design;
 
-
 namespace Mush.AppLayer.Services
 {
-    
 
     public sealed class MycologyStore : IMycologyStore
     {
         private readonly Dictionary<Guid, MyceliumRow> _mycById = new();
         private readonly Dictionary<Guid, SpawnRow> _spawnById = new();
         private readonly Dictionary<Guid, BulkRow> _bulkById = new();
-
-        
 
         public BindingList<MyceliumRow> Myceliums { get; } = new();
 
@@ -29,21 +25,6 @@ namespace Mush.AppLayer.Services
             // Pokud už máš nějaká startovní data, tady můžeš zkonstruovat indexy:
             RebuildIndexes();
         }
-
-        //private void RebuildIndexes()
-        //{
-        //    _mycById.Clear(); _spawnById.Clear(); _bulkById.Clear();
-        //    foreach (var m in Myceliums)
-        //    {
-        //        _mycById[m.Id] = m;
-        //        foreach (var s in m.Spawns)
-        //        {
-        //            _spawnById[s.Id] = s;
-        //            foreach (var b in s.Bulks)
-        //                _bulkById[b.Id] = b;
-        //        }
-        //    }
-        //}
 
         private void RebuildIndexes()
         {
@@ -80,28 +61,6 @@ namespace Mush.AppLayer.Services
             return row;
         }
 
-        //public SpawnRow AddSpawn(MyceliumRow parent, string material, DateTime date)
-        //{
-        //    var row = new SpawnRow
-        //    {
-        //        Material = material,
-        //        Date = date,
-        //    };
-        //    parent.Spawns.Add(row);
-        //    return row;
-        //}
-
-        //public SpawnRow AddSpawn(Guid myceliumId, string material, DateTime date)
-        //{
-        //    if (!_mycById.TryGetValue(myceliumId, out var parent))
-        //        throw new KeyNotFoundException("Mycelium not found");
-
-        //    var row = new SpawnRow { MyceliumId = myceliumId, Material = material, Date = date};
-        //    parent.Spawns.Add(row);
-        //    _spawnById[row.Id] = row;
-        //    return row;
-        //}
-
         public SpawnRow AddSpawn(Guid myceliumId, string material, DateTime date /*, …*/)
         {
             if (!_mycById.TryGetValue(myceliumId, out var parent))
@@ -120,22 +79,6 @@ namespace Mush.AppLayer.Services
             return row;
         }
 
-        //public BulkRow AddBulk(Guid spawnId, string material, DateTime date)
-        //{
-        //    if (!_spawnById.TryGetValue(spawnId, out var parent))
-        //        throw new KeyNotFoundException("Spawn not found");
-
-        //    var row = new BulkRow
-        //    {
-        //        SpawnId = spawnId,
-        //        Material = material,
-        //        Date = date
-        //    };
-
-        //    parent.Bulks.Add(row);
-        //    _bulkById[row.Id] = row;
-        //    return row;
-        //}
 
         public BulkRow AddBulk(Guid spawnId, string material, DateTime date /*, …*/)
         {

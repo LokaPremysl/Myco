@@ -13,9 +13,7 @@ namespace Mush.AppLayer.Ports
         BindingList<MyceliumRow> Myceliums { get; }
 
         MyceliumRow AddMycelium(string myselium, DateTime date, string Origin);
-        //SpawnRow AddSpawn(Guid myceliumId, MyceliumRow parent, string material, DateTime date);
         SpawnRow AddSpawn(Guid myceliumId, string material, DateTime date);
-        //BulkRow AddBulk(Guid spawnId, SpawnRow parent, string material, DateTime date);
         BulkRow AddBulk(Guid spawnId, string material, DateTime date);
 
         //MyceliumRow? GetMycelium(Guid id);
