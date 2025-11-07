@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mush")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a50fd00027f53e9a910979384ac79a9a75169e6c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8833b2048c5f2f6aa9e9236bce4f0646e5d7639")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mush")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mush")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

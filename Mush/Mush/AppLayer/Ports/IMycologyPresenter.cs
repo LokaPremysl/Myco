@@ -16,5 +16,9 @@ namespace Mush.AppLayer.Ports
         // Perzistence
         Task LoadAsync(CancellationToken ct = default);
         Task SaveAsync(CancellationToken ct = default);
+
+        void OnMyceliumSelectionChanged(object? row);
+        void OnSpawnSelectionChanged(object? row);
+        Task DeleteSelectedAsync();
     }
 }

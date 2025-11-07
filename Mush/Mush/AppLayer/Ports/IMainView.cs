@@ -23,5 +23,13 @@ namespace Mush.AppLayer.Ports
         // Životní cyklus
         event EventHandler ViewLoaded;
         event FormClosingEventHandler ViewClosing;
+
+        bool Confirm(string title, string message);
+        void SetDeleteButtonText(string text);
+
+        // pomocné: která tabulka má fokus?
+        bool IsMyceliumFocused();
+        bool IsSpawnFocused();
+        bool IsBulkFocused();
     }
 }

@@ -74,7 +74,13 @@ namespace Mush.Infrastructure.Localization
             ["Bulk.Col.FlushCount"] = "Flushes",
             ["Bulk.Col.Date"] = "Prepared at",
             ["Bulk.Col.Notes"] = "Notes",
-        };
+                
+                ["MainForm.DeleteButton"] = "Delete selected",
+                ["Dialog.Confirm"] = "Confirm",
+                ["Confirm.DeleteBulk"] = "Delete selected bulk?",
+                ["Confirm.DeleteSpawn"] = "Delete spawn including {0} bulks?",
+                ["Confirm.DeleteMycelium"] = "Delete mycelium including {0} spawns and {1} bulks?",
+            };
 
             _cs = new Dictionary<string, string>
             {
@@ -132,7 +138,12 @@ namespace Mush.Infrastructure.Localization
             ["Bulk.Col.FlushCount"] = "Počet flushů",
             ["Bulk.Col.Date"] = "Připraveno",
             ["Bulk.Col.Notes"] = "Poznámky",
-        };
+                ["MainForm.DeleteButton"] = "Smazat vybrané",
+                ["Dialog.Confirm"] = "Potvrdit",
+                ["Confirm.DeleteBulk"] = "Smazat vybraný bulk?",
+                ["Confirm.DeleteSpawn"] = "Smazat spawn včetně {0} bulků?",
+                ["Confirm.DeleteMycelium"] = "Smazat mycelium včetně {0} spawnů a {1} bulků?",
+            };
         }
 
         //public string T(string key)

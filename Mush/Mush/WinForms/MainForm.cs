@@ -30,11 +30,13 @@ namespace Mush.WinForms
         private DataGridView gridSpawn = new();
         private DataGridView gridBulk = new();
 
-        private Button btnAddMycelium, btnAddSpawn, btnAddBulk, btnLoad, btnSave;
+        private Button btnAddMycelium, btnAddSpawn, btnAddBulk, btnLoad, btnSave, btnDelete;
         private ComboBox cboLang;
 
         public event EventHandler? ViewLoaded;
         public event FormClosingEventHandler? ViewClosing;
+
+        
 
         public MainForm(IMycologyPresenter presenter, ITextService texts)
         {
@@ -45,13 +47,38 @@ namespace Mush.WinForms
             BuildLayout();
             WireBindings();
 
+            gridMycelium.SelectionChanged += (_, __) => UpdateDeleteButton();
+            gridSpawn.SelectionChanged += (_, __) => UpdateDeleteButton();
+            gridBulk.SelectionChanged += (_, __) => UpdateDeleteButton();
+            UpdateDeleteButton();
+
             // připojit presenter až po vytvoření UI
             _p.Attach(this);
 
             // lifecycle do IMainView eventů
             this.Load += (_, __) => ViewLoaded?.Invoke(this, EventArgs.Empty);
             this.FormClosing += (s, e) => ViewClosing?.Invoke(this, e);
+            
+            //Del na mazání
+            this.KeyPreview = true;
+            this.KeyDown += (_, e) =>
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    _p.DeleteSelectedAsync();
+                    e.Handled = true;
+                }
+            };
         }
+
+        void UpdateDeleteButton()
+        {
+            btnDelete.Enabled =
+                gridBulk.CurrentRow != null ||
+                gridSpawn.CurrentRow != null ||
+                gridMycelium.CurrentRow != null;
+        }
+        
 
         private void BuildLayout()
         {
@@ -64,6 +91,10 @@ namespace Mush.WinForms
             btnAddBulk = new Button { AutoSize = true };
             btnLoad = new Button { Text = "Load", AutoSize = true };
             btnSave = new Button { Text = "Save", AutoSize = true };
+            btnDelete = new Button { AutoSize = true };
+            btnDelete.Click += (_, __) => _p.DeleteSelectedAsync();   // presenter rozhodne co
+
+            top.Controls.Add(btnDelete);
 
             btnAddMycelium.Click += (_, __) =>
             {
@@ -100,11 +131,12 @@ namespace Mush.WinForms
 
             top.Controls.AddRange(new Control[] { btnAddMycelium, btnAddSpawn, btnAddBulk, btnLoad, btnSave, cboLang });
 
-            var body = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3 };
+            var body = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 2 };
             body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
             body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
             body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34));
-
+            body.RowStyles.Add(new RowStyle(SizeType.Percent, 67));
+            body.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
             gridMycelium = CreateGrid();
             gridSpawn = CreateGrid();
             gridBulk = CreateGrid();
@@ -119,6 +151,8 @@ namespace Mush.WinForms
 
             Controls.Add(body);
             Controls.Add(top);
+
+            
         }
 
         private DataGridView CreateGrid()
@@ -147,8 +181,11 @@ namespace Mush.WinForms
             gridBulk.DataSource = BulkBinding;
 
             // při změně výběru jen požadavek na presenter (ten si výběr vyžádá přes Current* metody)
-            gridMycelium.SelectionChanged += (_, __) => { /* presenter si vyžádá přes CurrentMycelium() */ };
-            gridSpawn.SelectionChanged += (_, __) => { /* presenter si vyžádá přes CurrentSpawn() */ };
+            gridMycelium.SelectionChanged += (_, __) =>
+       _p.OnMyceliumSelectionChanged(gridMycelium.CurrentRow?.DataBoundItem);
+
+            gridSpawn.SelectionChanged += (_, __) =>
+                _p.OnSpawnSelectionChanged(gridSpawn.CurrentRow?.DataBoundItem);
         }
 
         // IMainView implementace
@@ -178,5 +215,16 @@ namespace Mush.WinForms
             }
             Apply(gridMycelium); Apply(gridSpawn); Apply(gridBulk);
         }
+
+        public bool Confirm(string title, string message)
+    => MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
+
+        public void SetDeleteButtonText(string text) => btnDelete.Text = text;
+
+        public bool IsMyceliumFocused() => gridMycelium.Focused || gridMycelium.ContainsFocus;
+        public bool IsSpawnFocused() => gridSpawn.Focused || gridSpawn.ContainsFocus;
+        public bool IsBulkFocused() => gridBulk.Focused || gridBulk.ContainsFocus;
+
+
     }
 }
