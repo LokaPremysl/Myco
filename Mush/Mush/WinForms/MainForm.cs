@@ -22,6 +22,7 @@ namespace Mush.WinForms
     {
         private readonly IMycologyPresenter _p;
         private readonly ITextService _t;
+        private readonly Mush.Infrastructure.Config.IColumnsConfig _cols;
         public BindingSource MyceliumBinding { get; } = new();
         public BindingSource SpawnBinding { get; } = new();
         public BindingSource BulkBinding { get; } = new();
@@ -38,10 +39,11 @@ namespace Mush.WinForms
 
         
 
-        public MainForm(IMycologyPresenter presenter, ITextService texts)
+        public MainForm(IMycologyPresenter presenter, ITextService texts, Mush.Infrastructure.Config.IColumnsConfig cols)
         {
             _p = presenter;
             _t = texts;
+            _cols = cols;
 
             InitializeComponent();
             BuildLayout();
@@ -144,6 +146,7 @@ namespace Mush.WinForms
             GridColumnFactory.ApplyMyceliumColumns(gridMycelium, _t);
             GridColumnFactory.ApplySpawnColumns(gridSpawn, _t);
             GridColumnFactory.ApplyBulkColumns(gridBulk, _t);
+            ApplyColumnVisibilityFromConfig();
 
             body.Controls.Add(gridMycelium, 0, 0);
             body.Controls.Add(gridSpawn, 1, 0);
@@ -152,7 +155,35 @@ namespace Mush.WinForms
             Controls.Add(body);
             Controls.Add(top);
 
-            
+            var btnCols = new Button { Text = _t.T("MainForm.ColumnsButton") ?? "Columns…", AutoSize = true };
+            btnCols.Click += (_, __) =>
+            {
+                using var dlg = new ColumnChooserDialog(gridMycelium, gridSpawn, gridBulk, _cols, _t);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    // případně nic – dialog už promítl změny do gridů a uložil config
+                }
+            };
+            top.Controls.Add(btnCols);
+
+        }
+
+        private void ApplyColumnVisibilityFromConfig()
+        {
+            Apply("mycelium", gridMycelium);
+            Apply("spawn", gridSpawn);
+            Apply("bulk", gridBulk);
+
+            void Apply(string key, DataGridView g)
+            {
+                var vis = _cols.GetVisibility(key);
+                foreach (DataGridViewColumn c in g.Columns)
+                {
+                    var tag = c.Tag as string;
+                    if (string.IsNullOrWhiteSpace(tag)) continue;
+                    if (vis.TryGetValue(tag, out var v)) c.Visible = v; // jinak nech aktuální default
+                }
+            }
         }
 
         private DataGridView CreateGrid()

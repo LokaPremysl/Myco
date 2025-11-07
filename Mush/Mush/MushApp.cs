@@ -26,6 +26,7 @@ namespace Mush
                     s.AddSingleton<IMycologyStore, MycologyStore>();
                     s.AddSingleton<ITextService>(sp => new TextService("cs"));
                     s.AddSingleton<JsonMycologyStore>();
+                    s.AddSingleton<Mush.Infrastructure.Config.IColumnsConfig>(_ => new Mush.Infrastructure.Config.ColumnsConfig());
                     //s.AddScoped<IProjectService, ProjectService>();
                     s.AddTransient<MainForm>();
                     s.AddTransient<SpawnDialog>();

@@ -40,6 +40,8 @@ namespace Mush.Infrastructure.Localization
 
                 ["MainForm.DeleteButton"] = "Remove",
                 ["MainForm.DetailsHeader"] = "Details / lineage / yield",
+                ["MainForm.ColumnsButton"] = "Columns…",
+                ["MainForm.ColumnsDialogTitle"] = "Select visible columns",
 
                 // Dialog labels
                 ["SpawnDialog.Title"] = "New spawn",
@@ -95,6 +97,8 @@ namespace Mush.Infrastructure.Localization
                 ["MainForm.Tab.Spawn"] = "Spawn (zrno)",
                 ["MainForm.Tab.Bulk"] = "Bulk / plodící boxy",
                 ["MainForm.Tab.Harvest"] = "Sklizně / flush",
+                ["MainForm.ColumnsButton"] = "Sloupce…",
+                ["MainForm.ColumnsDialogTitle"] = "Výběr sloupců",
 
                 ["MainForm.AddCultureButton"] = "Přidat kulturu",
                 ["MainForm.AddSpawnButton"] = "Přidat spawn",

@@ -7,12 +7,32 @@
       "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\winforms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\services\\mycologypresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\applayer\\services\\mycologypresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\winforms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\winforms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\mushapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\mushapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\infrastructure\\localization\\textservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\infrastructure\\localization\\textservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|d:\\temp\\github\\myco\\mush\\mush\\winforms\\ui\\columnchooserdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\winforms\\ui\\columnchooserdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|d:\\temp\\github\\myco\\mush\\mush\\infrastructure\\config\\columnsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\infrastructure\\config\\columnsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|d:\\temp\\github\\myco\\mush\\mush\\infrastructure\\config\\icolumnsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\infrastructure\\config\\icolumnsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\services\\mycologypresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\applayer\\services\\mycologypresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\ports\\imycologypresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,20 +55,12 @@
       "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\winforms\\inputdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\mushapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\mushapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\applayer\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\services\\mycologystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\applayer\\services\\mycologystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\winforms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|solutionrelative:mush\\winforms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4FEE8247-DBC2-4138-8C1D-DEFC5C84662B}|Mush\\Mush.csproj|D:\\temp\\GitHub\\Myco\\Mush\\mush\\applayer\\dtos\\bulkrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,7 +106,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 409,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,20 +122,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ColumnChooserDialog.cs",
+              "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\Ui\\ColumnChooserDialog.cs",
+              "RelativeDocumentMoniker": "Mush\\WinForms\\Ui\\ColumnChooserDialog.cs",
+              "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\Ui\\ColumnChooserDialog.cs",
+              "RelativeToolTip": "Mush\\WinForms\\Ui\\ColumnChooserDialog.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T08:04:55.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ColumnsConfig.cs",
+              "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Config\\ColumnsConfig.cs",
+              "RelativeDocumentMoniker": "Mush\\Infrastructure\\Config\\ColumnsConfig.cs",
+              "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Config\\ColumnsConfig.cs",
+              "RelativeToolTip": "Mush\\Infrastructure\\Config\\ColumnsConfig.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAgwDoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T08:04:26.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IColumnsConfig.cs",
+              "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Config\\IColumnsConfig.cs",
+              "RelativeDocumentMoniker": "Mush\\Infrastructure\\Config\\IColumnsConfig.cs",
+              "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Config\\IColumnsConfig.cs",
+              "RelativeToolTip": "Mush\\Infrastructure\\Config\\IColumnsConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T08:03:53.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainForm.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\MainForm.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\MainForm.cs",
               "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\MainForm.cs",
               "RelativeToolTip": "Mush\\WinForms\\MainForm.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAAAE4AAAAcAAAA",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAgwIUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-06T13:31:58.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "InputDialog.cs [N\u00E1vrh]",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\InputDialog.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\InputDialog.cs",
@@ -135,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "MycologyPresenter.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Services\\MycologyPresenter.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Services\\MycologyPresenter.cs",
@@ -148,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "IMycologyPresenter.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Ports\\IMycologyPresenter.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Ports\\IMycologyPresenter.cs",
@@ -161,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "IMainView.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Ports\\IMainView.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Ports\\IMainView.cs",
@@ -174,20 +225,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "MainForm.Designer.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\MainForm.Designer.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\MainForm.Designer.cs",
               "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\MainForm.Designer.cs",
               "RelativeToolTip": "Mush\\WinForms\\MainForm.Designer.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAMwCMAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-05T13:16:26.181Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "ProjectService.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Services\\ProjectService.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Services\\ProjectService.cs",
@@ -200,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "IProjectService.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Ports\\IProjectService.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Ports\\IProjectService.cs",
@@ -212,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "MainForm.cs [N\u00E1vrh]",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\MainForm.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\MainForm.cs",
@@ -224,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Auth\\AuthService.cs",
               "RelativeDocumentMoniker": "Mush\\Infrastructure\\Auth\\AuthService.cs",
@@ -236,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "JsonMycologyStore.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Stores\\JsonMycologyStore.cs",
               "RelativeDocumentMoniker": "Mush\\Infrastructure\\Stores\\JsonMycologyStore.cs",
@@ -244,11 +295,12 @@
               "RelativeToolTip": "Mush\\Infrastructure\\Stores\\JsonMycologyStore.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAArwCEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T07:38:21.777Z"
+              "WhenOpened": "2025-11-04T07:38:21.777Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "MycologyStore.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Services\\MycologyStore.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Services\\MycologyStore.cs",
@@ -260,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "IMycologyStore.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Ports\\IMycologyStore.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Ports\\IMycologyStore.cs",
@@ -272,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "GridColumnFactory.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\Ui\\GridColumnFactory.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\Ui\\GridColumnFactory.cs",
@@ -285,7 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "BulkRow.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Dtos\\BulkRow.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Dtos\\BulkRow.cs",
@@ -297,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "SpawnRow.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Dtos\\SpawnRow.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Dtos\\SpawnRow.cs",
@@ -309,7 +361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "MyceliumRow.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Dtos\\MyceliumRow.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Dtos\\MyceliumRow.cs",
@@ -321,20 +373,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TextService.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Localization\\TextService.cs",
               "RelativeDocumentMoniker": "Mush\\Infrastructure\\Localization\\TextService.cs",
               "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\Infrastructure\\Localization\\TextService.cs",
               "RelativeToolTip": "Mush\\Infrastructure\\Localization\\TextService.cs",
-              "ViewState": "AQIAAHYAAAAAAAAAAAAcwJAAAABeAAAA",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAAAGQAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T10:59:46.974Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ITextService.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\AppLayer\\Ports\\ITextService.cs",
               "RelativeDocumentMoniker": "Mush\\AppLayer\\Ports\\ITextService.cs",
@@ -346,20 +398,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "MushApp.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\MushApp.cs",
               "RelativeDocumentMoniker": "Mush\\MushApp.cs",
               "ToolTip": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\MushApp.cs",
               "RelativeToolTip": "Mush\\MushApp.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAABwAAAAWAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABwAAACDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T10:50:59.647Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "SpawnDialog.cs",
               "DocumentMoniker": "D:\\temp\\GitHub\\Myco\\Mush\\Mush\\WinForms\\SpawnDialog.cs",
               "RelativeDocumentMoniker": "Mush\\WinForms\\SpawnDialog.cs",
